@@ -1,0 +1,31 @@
+<ruleset name="Custom Rules"
+         xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd"
+         xmlns:pmd="http://pmd.sourceforge.net/ruleset/2.0.0">
+
+    <description>
+        Custom ruleset to detect deeply nested if statements.
+    </description>
+
+    <rule name="AvoidDeeplyNestedIfStatements"
+          language="java"
+          class="net.sourceforge.pmd.lang.rule.xpath.XPathRule"
+          message="Avoid using three or more nested if statements."
+          severity="3">
+        
+        <description>
+            Cette règle détecte si il y a 3 if ou plus imbriqués.
+        </description>
+
+        <properties>
+            <property name="xpath">
+                <value>
+                    //IfStatement[descendant::IfStatement/descendant::IfStatement]
+                </value>
+            </property>
+        </properties>
+        
+    </rule>
+</ruleset>
+
